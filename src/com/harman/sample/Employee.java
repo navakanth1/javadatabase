@@ -24,16 +24,16 @@ public class Employee {
                         Connection c = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/company?autoReconnect=true&useSSL=false","root","");
                         String code,name,designation,no;
                         System.out.println("Enter the following details");
-                        System.out.println("employee code");
+                        System.out.println("code");
                         code = input.next();
-                        System.out.println("Employee name");
+                        System.out.println("name");
                         name = input.next();
                         System.out.println("Designation of employee");
                         designation = input.next();
                         System.out.println("Mobile number");
                         no = input.next();
                         Statement stmt = (Statement) c.createStatement();
-                        stmt.executeUpdate("INSERT INTO `employee`(`employee code`, `name`, `designation`, `mobileno`) " +
+                        stmt.executeUpdate("INSERT INTO `employee`(`code`, `name`, `designation`, `mobileno`) " +
                                 "VALUES("+code+",'"+name+"','"+designation+"',"+no+")");
                         System.out.println("Inserted successfully");
                     }
@@ -46,10 +46,10 @@ public class Employee {
                         Statement stmt = (Statement) c.createStatement();
                         ResultSet rs = stmt.executeQuery("SELECT * FROM `employee` WHERE 1");
                         while(rs.next()){
-                            System.out.println("Employee code :"+rs.getInt("employee code"));
-                            System.out.println("Name :"+rs.getString("name"));
-                            System.out.println("Designation :"+rs.getString("designation"));1
-                            System.out.println("Mobile number :"+rs.getBigDecimal("mobileno"));
+                            System.out.println("code :"+rs.getInt("code"));
+                            System.out.println("name :"+rs.getString("name"));
+                            System.out.println("designation :"+rs.getString("designation"));
+                            System.out.println("no :"+rs.getBigDecimal("no"));
                         }
                     }catch (Exception e){
                         System.out.println(e);
